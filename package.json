@@ -1,0 +1,21 @@
+{
+  "name": "hexo-content-blocks",
+  "version": "2.0.0",
+  "description": "A plugin for Hexo, which allows someone to use content block with styles. Customization supported.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sukwants/hexo-content-blocks.git"
+  },
+  "keywords": [
+    "Hexo",
+    "blocks",
+    "admonitions"
+  ],
+  "author": "Sukwants",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Sukwants/hexo-content-blocks/issues"
+  },
+  "homepage": "https://github.com/Sukwants/hexo-content-blocks#readme"
+}
