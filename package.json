@@ -1,6 +1,6 @@
 {
   "name": "hexo-content-blocks",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A plugin for Hexo, which allows someone to use content block with styles. Customization supported.",
   "main": "index.js",
   "repository": {
