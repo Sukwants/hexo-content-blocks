@@ -149,7 +149,7 @@ hexo.extend.tag.register('contentblock', (args, content) => {
   return `
 <div class="content block ${type}">
   <p class="content block-title"><i class="${types[type][1]} fa-fw"></i>${title}</p>
-  ${hexo.render.renderSync({ text: content, engine: 'markdown' })}
+  ${hexo.render.renderSync({ text: content, engine: 'markdown' }).trim().replace(/\n/g, '\n  ')}
 </div>
 `;
 }, {ends: true});
@@ -171,7 +171,7 @@ hexo.extend.tag.register('contentbox', (args, content) => {
   return `
 <details class="content box ${type}"${open ? ' open' : ''}>
   <summary><i class="${types[type][1]} fa-fw"></i>${title}<div class="box-open-button"><i class="${openbutton} fa-fw"></i></div></summary>
-  ${hexo.render.renderSync({ text: content, engine: 'markdown' })}
+  ${hexo.render.renderSync({ text: content, engine: 'markdown' }).trim().replace(/\n/g, '\n  ')}
 </details>
 `;
 }, {ends: true});
@@ -199,7 +199,7 @@ hexo.extend.tag.register('contentcards', (args, content) => {
     ${titles.map((title, i) => `<label class="content cards-label" id="content_cards_${cards_tot}_label_${i}" for="content_cards_${cards_tot}_input_${i}">${title}</label>`).join('\n')}
   </div>
   <div class="content cards-contents" id="content_cards_${cards_tot}_contents">
-    ${titles.map((title, i) => `<div class="content cards-content" id="content_cards_${cards_tot}_content_${i}">${hexo.render.renderSync({ text: contents[i], engine: 'markdown' })}</div>`).join('\n')}
+    ${titles.map((title, i) => `<div class="content cards-content" id="content_cards_${cards_tot}_content_${i}">${hexo.render.renderSync({ text: contents[i], engine: 'markdown' }).trim().replace(/\n/g, '\n  ')}</div>`).join('\n')}
   </div>
   <script>
     function select_${cards_tot}(id) {
