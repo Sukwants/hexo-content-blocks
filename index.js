@@ -13,7 +13,7 @@ const openbutton = hexo.config.content_blocks.open_button;
 var types = hexo.config.content_blocks.types;
 
 const name_header = "hcb";
-const default_type = name_header + "note";
+const default_type = "note";
 {
   var new_types = {};
   for (key in types) {
@@ -149,7 +149,7 @@ hexo.extend.tag.register('contentblock', (args, content) => {
   var type = default_type, title = 'default_not_set';
   for (var i = 0; i < args.length; ++i) {
     if (args[i].startsWith('type:')) {
-      type = name_header + args[i].replace(/^type:/, '');
+      type = args[i].replace(/^type:/, '');
     } else {
       title = args[i].replace(/^title:/, '');
     }
@@ -157,6 +157,8 @@ hexo.extend.tag.register('contentblock', (args, content) => {
   if (title == 'default_not_set') {
     title = type.substring(0, 1).toUpperCase() + type.substring(1);
   }
+  type = name_header + type;
+  
   return `
 <div class="${name_header}-content block ${type}">
   <p class="${name_header}-content block-title"><i class="${types[type][1]} fa-fw"></i>${title}</p>
@@ -169,7 +171,7 @@ hexo.extend.tag.register('contentbox', (args, content) => {
   var type = default_type, title = 'default_not_set', open = false;
   for (var i = 0; i < args.length; ++i) {
     if (args[i].startsWith('type:')) {
-      type = name_header + args[i].replace(/^type:/, '');
+      type = args[i].replace(/^type:/, '');
     } else if (args[i] == 'open') {
       open = true;
     } else {
@@ -179,6 +181,8 @@ hexo.extend.tag.register('contentbox', (args, content) => {
   if (title == 'default_not_set') {
     title = type.substring(0, 1).toUpperCase() + type.substring(1);
   }
+  type = name_header + type;
+
   return `
 <details class="${name_header}-content box ${type}"${open ? ' open' : ''}>
   <summary><i class="${types[type][1]} fa-fw"></i>${title}<div class="box-open-button"><i class="${openbutton} fa-fw"></i></div></summary>
@@ -193,13 +197,14 @@ hexo.extend.tag.register('contentcards', (args, content) => {
   var type = default_type, titles = [], color = undefined;
   for (var i = 0; i < args.length; ++i) {
     if (args[i].startsWith('type:')) {
-      type = name_header + args[i].replace(/^type:/, '');
+      type = args[i].replace(/^type:/, '');
     } else if (args[i].startsWith('color:')) {
       color = args[i].replace(/^color:/, '');
     } else {
       titles.push(args[i].replace(/^title:/, ''));
     }
   }
+  type = name_header + type;
 
   const contents = content.split(/<!-{2,}card-break-{2,}>/);
   color = color || types[type][0];
